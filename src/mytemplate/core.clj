@@ -3,9 +3,8 @@
   (:require [compojure.core :refer :all]
             [compojure.route :as route]
             [compojure.handler :as handler]
-            ;ring.jetty.adapter
             [ring.util.response :refer [resource-response redirect]]))
-
+(* 7 7)
 (use 'ring.adapter.jetty)
 (defn -main
   "I don't do a whole lot ... yet."
@@ -18,10 +17,10 @@
   (route/resources "/")
   (route/not-found "<h1>Page not found</h1>"))
 
+
 (def handler
   (handler/site app))
 
-
-
 (comment
-  (run-jetty handler {:port 7777}))
+  (run-jetty handler {:port 5678})
+  (.stop handler))

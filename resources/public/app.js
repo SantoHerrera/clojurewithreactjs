@@ -1,15 +1,27 @@
+'use strict';
 
-var CommentBox = React.createClass({
-  render: function() {
-    return (
-      <p>
-        Hello, world! I am a CommentBox.
-      </p>
+const e = React.createElement;
+
+class LikeButton extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { liked: false };
+  }
+
+  render() {
+    if (this.state.liked || !this.state.liked) {
+      console.log("youve clicked this", this.state)
+    }
+
+    return e(
+      'button',
+      {
+      onClick: () => this.setState(({ liked }) => ({ liked: !liked }))
+       },
+      'Like'
     );
   }
-});
+}
 
-React.render(
-  <CommentBox />,
-  document.getElementById('content')
-);
+const domContainer = document.querySelector('#like_button_container');
+ReactDOM.render(e(LikeButton), domContainer);
